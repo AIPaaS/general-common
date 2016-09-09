@@ -1,14 +1,10 @@
 package com.ai.platform.common.service.atom.sysuser.impl;
 
-import java.sql.Timestamp;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 
 import org.springframework.stereotype.Component;
 
 import com.ai.opt.sdk.util.CollectionUtil;
-import com.ai.opt.sdk.util.DateUtil;
 import com.ai.opt.sdk.util.StringUtil;
 import com.ai.platform.common.constants.VOConstants.DeleteFlagConstant;
 import com.ai.platform.common.dao.mapper.bo.SysUser;
@@ -43,13 +39,13 @@ public class SysUserAtomSVImpl implements ISysUserAtomSV {
 			criteria.andIdEqualTo(user.getId());
 		}
 		criteria.andDelFlagEqualTo(DeleteFlagConstant.NO);
-		 Date crruntDate = DateUtil.getDate();
+		/* Date crruntDate = DateUtil.getDate();
 	     SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 	     String dateStr = sdf.format(crruntDate);
 	     Timestamp crurentTs = Timestamp.valueOf(dateStr);  
 	     //添加有效时间限制
 	      criteria.andEffectiveDateLessThanOrEqualTo(crurentTs);
-	      criteria.andExpiryDateGreaterThanOrEqualTo(crurentTs);
+	      criteria.andExpiryDateGreaterThanOrEqualTo(crurentTs);*/
 
 		SysUserMapper mapper = MapperFactory.getSysUserMapper();
 		List<SysUser> userList = mapper.selectByExample(example);
@@ -70,13 +66,13 @@ public class SysUserAtomSVImpl implements ISysUserAtomSV {
 			criteria.andIdEqualTo(id.trim());
 		}
 		criteria.andDelFlagEqualTo(DeleteFlagConstant.NO);
-		Date crruntDate = DateUtil.getDate();
+		/*Date crruntDate = DateUtil.getDate();
 	     SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 	     String dateStr = sdf.format(crruntDate);
 	     Timestamp crurentTs = Timestamp.valueOf(dateStr);  
 	     //添加有效时间限制
 	      criteria.andEffectiveDateLessThanOrEqualTo(crurentTs);
-	      criteria.andExpiryDateGreaterThanOrEqualTo(crurentTs);
+	      criteria.andExpiryDateGreaterThanOrEqualTo(crurentTs);*/
 		SysUserMapper mapper = MapperFactory.getSysUserMapper();
 		List<SysUser> userList = mapper.selectByExample(example);
 		if (!CollectionUtil.isEmpty(userList)) {
@@ -98,13 +94,13 @@ public class SysUserAtomSVImpl implements ISysUserAtomSV {
 			criteria.andOfficeIdEqualTo(officeId.trim());
 		}
 		criteria.andDelFlagEqualTo(DeleteFlagConstant.NO);
-		 Date crruntDate = DateUtil.getDate();
+		 /*Date crruntDate = DateUtil.getDate();
 	     SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 	     String dateStr = sdf.format(crruntDate);
 	     Timestamp crurentTs = Timestamp.valueOf(dateStr);  
 	     //添加有效时间限制
 	      criteria.andEffectiveDateLessThanOrEqualTo(crurentTs);
-	      criteria.andExpiryDateGreaterThanOrEqualTo(crurentTs);
+	      criteria.andExpiryDateGreaterThanOrEqualTo(crurentTs);*/
 
 		SysUserMapper mapper = MapperFactory.getSysUserMapper();
 		List<SysUser> userList = mapper.selectByExample(example);
