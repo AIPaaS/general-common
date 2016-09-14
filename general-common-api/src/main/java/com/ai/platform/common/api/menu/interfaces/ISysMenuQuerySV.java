@@ -23,6 +23,7 @@ public interface ISysMenuQuerySV {
 	 * @throws SystemException
 	 * @author zhouxh
 	 * @ApiCode	PLAT_100
+	 * @ApiDocMethod
 	 * @RestRelativeURL menuservice/queryMenuByUserId
 	 */
 	@POST
