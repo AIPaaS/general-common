@@ -4,6 +4,7 @@ import com.ai.opt.base.exception.BusinessException;
 import com.ai.opt.base.vo.BaseInfo;
 import com.ai.opt.sdk.constants.ExceptCodeConstants;
 import com.ai.opt.sdk.util.StringUtil;
+import com.ai.platform.common.api.menu.param.SysMenuListQueryRequest;
 import com.ai.platform.common.api.office.param.OfficeChildrenListQueryRequest;
 import com.ai.platform.common.api.office.param.OfficeDetailQueryRequest;
 import com.ai.platform.common.api.office.param.OfficeParentListQueryRequest;
@@ -160,6 +161,18 @@ public class SystemValidateUtil {
 			throw new BusinessException(ExceptCodeConstants.Special.PARAM_IS_NULL, "tenantId不能为空");
 		}
 		if (StringUtil.isBlank(completeRequest.getId())) {
+			throw new BusinessException(ExceptCodeConstants.Special.PARAM_IS_NULL, "id不能为空");
+		}
+	}
+	
+	public static void validateCompleteSysMenu(SysMenuListQueryRequest completeRequest) {
+		if (completeRequest == null) {
+			throw new BusinessException(ExceptCodeConstants.Special.PARAM_IS_NULL, "参数对象不能为空");
+		}
+		if (StringUtil.isBlank(completeRequest.getTenantId())) {
+			throw new BusinessException(ExceptCodeConstants.Special.PARAM_IS_NULL, "tenantId不能为空");
+		}
+		if (StringUtil.isBlank(completeRequest.getUserId())) {
 			throw new BusinessException(ExceptCodeConstants.Special.PARAM_IS_NULL, "id不能为空");
 		}
 	}

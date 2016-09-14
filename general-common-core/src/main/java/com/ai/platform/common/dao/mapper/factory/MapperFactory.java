@@ -16,6 +16,7 @@ import com.ai.platform.common.dao.mapper.interfaces.GnSubjectFundMapper;
 import com.ai.platform.common.dao.mapper.interfaces.GnSubjectMapper;
 import com.ai.platform.common.dao.mapper.interfaces.GnSysParamMapper;
 import com.ai.platform.common.dao.mapper.interfaces.GnTenantMapper;
+import com.ai.platform.common.dao.mapper.interfaces.SysMenuMapper;
 import com.ai.platform.common.dao.mapper.interfaces.SysOfficeMapper;
 import com.ai.platform.common.dao.mapper.interfaces.SysUserMapper;
 import com.ai.platform.common.dao.mapper.interfaces.SysWaitjobsMapper;
@@ -88,6 +89,9 @@ public class MapperFactory {
         return sqlSessionTemplate.getMapper(GnIndustryMapper.class);
     }
     
+    public static SysMenuMapper getSysMenuMapper() {
+        return sqlSessionTemplate.getMapper(SysMenuMapper.class);
+    }
     
     
 }
