@@ -2,7 +2,7 @@
 
 #env
 APP_HOME=/dubbo-service
-APP_NAME="changhong.common"
+APP_NAME="general.common"
 APP_PARM="aiopt.product.name=${APP_NAME}"
 PROCESS_PARM="general.common.dubbo.port=${REST_PORT}"
 
@@ -34,8 +34,6 @@ sed -i "s/ccs.zk_address=.*/ccs.zk_address=${ZK_ADDR}/g" ${APP_HOME}/config/paas
 sed -i "s/dubbo.registry.address=.*/dubbo.registry.address=${REST_REGISTRY_ADDR}/g" ${APP_HOME}/config/dubbo/dubbo.properties
 sed -i "s/general.common.dubbo.port=.*/general.common.dubbo.port=${REST_PORT}/g" ${APP_HOME}/config/dubbo/dubbo.properties
 sed -i "s/dubbo.protocol.contextpath=.*/dubbo.protocol.contextpath=${CONTEXT_PATH}/g" ${APP_HOME}/config/dubbo/dubbo.properties
-sed -i "s/dubbo.protocol=.*/dubbo.protocol=${PROTOCOL}/g" ${APP_HOME}/config/dubbo/dubbo.properties
-
 
 echo "-------------------${APP_NAME} dubbo service start --------------------"
 java ${START_CMD}
