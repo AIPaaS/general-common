@@ -23,7 +23,7 @@ public class SysUserQueryTest {
 	@Test
 	public void queryUserInfo(){
 		SysUserQueryRequest queryRequest=new SysUserQueryRequest();
-		queryRequest.setTenantId("   chan  ghong   ");
+		queryRequest.setTenantId("chan  ghong   ");
 		queryRequest.setNo("   0010");
 		//queryRequest.setPhone(" 456 ");
 		queryRequest.setLoginName("jn_jsb");
