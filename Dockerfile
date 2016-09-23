@@ -4,21 +4,18 @@ MAINTAINER gucl<gucl@asiainfo.com>
 WORKDIR /
 
 # deploy user dubbo service
-COPY ./build/libs /general-common-service/libs/
-COPY ./build/config /general-common-service/config/
+COPY ./build/libs /dubbo-service/libs/
+COPY ./build/config /dubbo-service/config/
 
 #mkdir logs path
-RUN cd /general-common-service && mkdir logs && cd /general-common-service/logs && mkdir ch-logs && mkdir slp-logs
+RUN cd /dubbo-service && mkdir logs && cd /dubbo-service/logs
 
 ## copy start script
-COPY ./script/general-common-service.sh /general-common-service.sh
-RUN chmod 755 /general-common-service.sh
+COPY ./script/start-dubbo-service.sh /start-dubbo-service.sh
+RUN chmod 755 /start-dubbo-service.sh
 
-# set start parameter for dubbo service
-ENV COMMON_LIB_HOME /general-common-service
-
-# Expose ports.
+# Expose dubbo/rest ports.
 EXPOSE 10885
 
 # Define default command.
-CMD ["./general-common-service.sh"]
+CMD ["./start-dubbo-service.sh"]
