@@ -1,7 +1,6 @@
 # Pull base image
 FROM 10.19.13.18:5000/jdk:7 
 MAINTAINER gucl<gucl@asiainfo.com>
-WORKDIR /
 
 # deploy user dubbo service
 COPY ./build/libs /dubbo-service/libs/
