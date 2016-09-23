@@ -18,7 +18,7 @@ RUN chmod 755 /general-common-service.sh
 ENV COMMON_LIB_HOME /general-common-service
 
 # Expose ports.
-EXPOSE 18881
+EXPOSE 10885
 
 # Define default command.
 CMD ["./general-common-service.sh"]
