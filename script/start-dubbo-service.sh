@@ -38,3 +38,6 @@ sed -i "s/dubbo.protocol.contextpath=.*/dubbo.protocol.contextpath=${CONTEXT_PAT
 echo "-------------------${APP_NAME} dubbo service start --------------------"
 java ${START_CMD}
 echo "${APP_NAME} dubbo server started!! logs at $LOG_PATH"
+
+
+./start-cache-service.sh
