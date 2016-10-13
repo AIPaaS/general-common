@@ -5,6 +5,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.util.StringUtils;
 
 import com.ai.paas.ipaas.mcs.interfaces.ICacheClient;
+import com.ai.paas.ipaas.util.StringUtil;
 import com.ai.platform.common.api.cache.param.Area;
 import com.ai.platform.common.constants.CacheNSMapper;
 import com.ai.platform.common.dao.mapper.bo.GnArea;
@@ -33,7 +34,12 @@ public final class AreaCacheUtil {
             ICacheClient cacheClient = CacheFactoryUtil.getCacheClient(CacheNSMapper.CACHE_GN_AREA);
             String data=cacheClient.hget(CacheNSMapper.CACHE_GN_AREA, key);
             GnArea result = JSON.parseObject(data, GnArea.class);
-            return result.getAreaName();
+            if(result!=null){
+            	return result.getAreaName();            	
+            }
+            else{
+            	return areaCode;
+            }
         } catch (Exception e) {
             logger.error("翻译区域AreaCode[{}]失败.失败原因:{}", areaCode, e);
             return areaCode;
@@ -48,6 +54,9 @@ public final class AreaCacheUtil {
     		String key=areaCode.toUpperCase();
     		ICacheClient cacheClient = CacheFactoryUtil.getCacheClient(CacheNSMapper.CACHE_GN_AREA);
     		String data=cacheClient.hget(CacheNSMapper.CACHE_GN_AREA, key);
+    		if(StringUtil.isBlank(data)){
+    			return null;
+    		}
             return  JSON.parseObject(data, Area.class);
     	} catch (Exception e) {
     		logger.error("获取区域Area[{}]失败.失败原因:{}", areaCode, e);

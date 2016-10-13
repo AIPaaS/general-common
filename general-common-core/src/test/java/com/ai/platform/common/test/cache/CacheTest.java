@@ -16,6 +16,7 @@ import com.ai.platform.common.api.cache.param.SysParamMultiCond;
 import com.ai.platform.common.api.cache.param.SysParamSingleCond;
 import com.ai.platform.common.cache.GnSysParamCache;
 import com.ai.platform.common.constants.CacheNSMapper;
+import com.ai.platform.common.util.AreaCacheUtil;
 import com.ai.platform.common.util.CacheFactoryUtil;
 import com.alibaba.fastjson.JSON;
 
@@ -106,6 +107,14 @@ public class CacheTest {
         String singleParam=iCacheSV.getAreaName("100999");
         		
 		System.out.println("singleParam="+JSON.toJSONString(singleParam));
+    }
+    
+    @Test
+    public void testAreaCode() throws Exception {
+    	//测试证件号码转换
+        String singleParam=AreaCacheUtil.getAreaName("21");
+        		
+		System.out.println("singleParam="+singleParam);
     }
     
     
