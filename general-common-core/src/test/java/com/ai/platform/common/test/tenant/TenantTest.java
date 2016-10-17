@@ -26,7 +26,7 @@ public class TenantTest {
     @Test
     public void tenantTest(){
     	GnTenantConditon cond=new GnTenantConditon();
-    	cond.setTenantId("SLP");
+    	cond.setTenantId("changhong");
         GnTenantVo result= sv.getTenant(cond);
         System.out.println("param="+JSON.toJSONString(cond));
         System.out.println("result="+JSON.toJSONString(result));
