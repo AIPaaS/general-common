@@ -37,6 +37,16 @@ public class GnTenantVo implements Serializable {
      * 租户企业门户对应的框架页面模板
      */
     private String framePageTemplate;
+    
+    /**
+     * 一级平台编号
+     */
+    private String merNo;
+
+    /**
+     * 收款商户号
+     */
+    private String sonMerNo;
 
     public String getIndustryCode() {
         return industryCode;
@@ -77,6 +87,22 @@ public class GnTenantVo implements Serializable {
     public void setFramePageTemplate(String framePageTemplate) {
         this.framePageTemplate = framePageTemplate;
     }
+
+	public String getMerNo() {
+		return merNo;
+	}
+
+	public void setMerNo(String merNo) {
+		this.merNo = merNo;
+	}
+
+	public String getSonMerNo() {
+		return sonMerNo;
+	}
+
+	public void setSonMerNo(String sonMerNo) {
+		this.sonMerNo = sonMerNo;
+	}
     
     
 

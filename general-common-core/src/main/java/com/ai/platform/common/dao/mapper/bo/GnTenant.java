@@ -15,6 +15,10 @@ public class GnTenant {
 
     private String framePageTemplate;
 
+    private String merNo;
+
+    private String sonMerNo;
+
     public String getTenantId() {
         return tenantId;
     }
@@ -69,5 +73,21 @@ public class GnTenant {
 
     public void setFramePageTemplate(String framePageTemplate) {
         this.framePageTemplate = framePageTemplate == null ? null : framePageTemplate.trim();
+    }
+
+    public String getMerNo() {
+        return merNo;
+    }
+
+    public void setMerNo(String merNo) {
+        this.merNo = merNo == null ? null : merNo.trim();
+    }
+
+    public String getSonMerNo() {
+        return sonMerNo;
+    }
+
+    public void setSonMerNo(String sonMerNo) {
+        this.sonMerNo = sonMerNo == null ? null : sonMerNo.trim();
     }
 }

@@ -9,6 +9,8 @@
     <result column="INDUSTRY_CODE" property="industryCode" jdbcType="VARCHAR" />
     <result column="LOGO" property="logo" jdbcType="VARCHAR" />
     <result column="FRAME_PAGE_TEMPLATE" property="framePageTemplate" jdbcType="VARCHAR" />
+    <result column="MER_NO" property="merNo" jdbcType="VARCHAR" />
+    <result column="SON_MER_NO" property="sonMerNo" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -69,7 +71,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    TENANT_ID, TENANT_NAME, TENANT_PWD, STATE, INDUSTRY_CODE, LOGO, FRAME_PAGE_TEMPLATE
+    TENANT_ID, TENANT_NAME, TENANT_PWD, STATE, INDUSTRY_CODE, LOGO, FRAME_PAGE_TEMPLATE, 
+    MER_NO, SON_MER_NO
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.ai.platform.common.dao.mapper.bo.GnTenantCriteria" >
     select
@@ -108,10 +111,12 @@
   <insert id="insert" parameterType="com.ai.platform.common.dao.mapper.bo.GnTenant" >
     insert into gn_tenant (TENANT_ID, TENANT_NAME, TENANT_PWD, 
       STATE, INDUSTRY_CODE, LOGO, 
-      FRAME_PAGE_TEMPLATE)
+      FRAME_PAGE_TEMPLATE, MER_NO, SON_MER_NO
+      )
     values (#{tenantId,jdbcType=VARCHAR}, #{tenantName,jdbcType=VARCHAR}, #{tenantPwd,jdbcType=VARCHAR}, 
       #{state,jdbcType=VARCHAR}, #{industryCode,jdbcType=VARCHAR}, #{logo,jdbcType=VARCHAR}, 
-      #{framePageTemplate,jdbcType=VARCHAR})
+      #{framePageTemplate,jdbcType=VARCHAR}, #{merNo,jdbcType=VARCHAR}, #{sonMerNo,jdbcType=VARCHAR}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.ai.platform.common.dao.mapper.bo.GnTenant" >
     insert into gn_tenant
@@ -137,6 +142,12 @@
       <if test="framePageTemplate != null" >
         FRAME_PAGE_TEMPLATE,
       </if>
+      <if test="merNo != null" >
+        MER_NO,
+      </if>
+      <if test="sonMerNo != null" >
+        SON_MER_NO,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="tenantId != null" >
@@ -159,6 +170,12 @@
       </if>
       <if test="framePageTemplate != null" >
         #{framePageTemplate,jdbcType=VARCHAR},
+      </if>
+      <if test="merNo != null" >
+        #{merNo,jdbcType=VARCHAR},
+      </if>
+      <if test="sonMerNo != null" >
+        #{sonMerNo,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -192,6 +209,12 @@
       <if test="record.framePageTemplate != null" >
         FRAME_PAGE_TEMPLATE = #{record.framePageTemplate,jdbcType=VARCHAR},
       </if>
+      <if test="record.merNo != null" >
+        MER_NO = #{record.merNo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sonMerNo != null" >
+        SON_MER_NO = #{record.sonMerNo,jdbcType=VARCHAR},
+      </if>
     </set>
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
@@ -205,7 +228,9 @@
       STATE = #{record.state,jdbcType=VARCHAR},
       INDUSTRY_CODE = #{record.industryCode,jdbcType=VARCHAR},
       LOGO = #{record.logo,jdbcType=VARCHAR},
-      FRAME_PAGE_TEMPLATE = #{record.framePageTemplate,jdbcType=VARCHAR}
+      FRAME_PAGE_TEMPLATE = #{record.framePageTemplate,jdbcType=VARCHAR},
+      MER_NO = #{record.merNo,jdbcType=VARCHAR},
+      SON_MER_NO = #{record.sonMerNo,jdbcType=VARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -231,6 +256,12 @@
       <if test="framePageTemplate != null" >
         FRAME_PAGE_TEMPLATE = #{framePageTemplate,jdbcType=VARCHAR},
       </if>
+      <if test="merNo != null" >
+        MER_NO = #{merNo,jdbcType=VARCHAR},
+      </if>
+      <if test="sonMerNo != null" >
+        SON_MER_NO = #{sonMerNo,jdbcType=VARCHAR},
+      </if>
     </set>
     where TENANT_ID = #{tenantId,jdbcType=VARCHAR}
   </update>
@@ -241,7 +272,9 @@
       STATE = #{state,jdbcType=VARCHAR},
       INDUSTRY_CODE = #{industryCode,jdbcType=VARCHAR},
       LOGO = #{logo,jdbcType=VARCHAR},
-      FRAME_PAGE_TEMPLATE = #{framePageTemplate,jdbcType=VARCHAR}
+      FRAME_PAGE_TEMPLATE = #{framePageTemplate,jdbcType=VARCHAR},
+      MER_NO = #{merNo,jdbcType=VARCHAR},
+      SON_MER_NO = #{sonMerNo,jdbcType=VARCHAR}
     where TENANT_ID = #{tenantId,jdbcType=VARCHAR}
   </update>
 </mapper>

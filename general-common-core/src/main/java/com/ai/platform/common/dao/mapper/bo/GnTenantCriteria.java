@@ -613,6 +613,146 @@ public class GnTenantCriteria {
             addCriterion("FRAME_PAGE_TEMPLATE not between", value1, value2, "framePageTemplate");
             return (Criteria) this;
         }
+
+        public Criteria andMerNoIsNull() {
+            addCriterion("MER_NO is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andMerNoIsNotNull() {
+            addCriterion("MER_NO is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andMerNoEqualTo(String value) {
+            addCriterion("MER_NO =", value, "merNo");
+            return (Criteria) this;
+        }
+
+        public Criteria andMerNoNotEqualTo(String value) {
+            addCriterion("MER_NO <>", value, "merNo");
+            return (Criteria) this;
+        }
+
+        public Criteria andMerNoGreaterThan(String value) {
+            addCriterion("MER_NO >", value, "merNo");
+            return (Criteria) this;
+        }
+
+        public Criteria andMerNoGreaterThanOrEqualTo(String value) {
+            addCriterion("MER_NO >=", value, "merNo");
+            return (Criteria) this;
+        }
+
+        public Criteria andMerNoLessThan(String value) {
+            addCriterion("MER_NO <", value, "merNo");
+            return (Criteria) this;
+        }
+
+        public Criteria andMerNoLessThanOrEqualTo(String value) {
+            addCriterion("MER_NO <=", value, "merNo");
+            return (Criteria) this;
+        }
+
+        public Criteria andMerNoLike(String value) {
+            addCriterion("MER_NO like", value, "merNo");
+            return (Criteria) this;
+        }
+
+        public Criteria andMerNoNotLike(String value) {
+            addCriterion("MER_NO not like", value, "merNo");
+            return (Criteria) this;
+        }
+
+        public Criteria andMerNoIn(List<String> values) {
+            addCriterion("MER_NO in", values, "merNo");
+            return (Criteria) this;
+        }
+
+        public Criteria andMerNoNotIn(List<String> values) {
+            addCriterion("MER_NO not in", values, "merNo");
+            return (Criteria) this;
+        }
+
+        public Criteria andMerNoBetween(String value1, String value2) {
+            addCriterion("MER_NO between", value1, value2, "merNo");
+            return (Criteria) this;
+        }
+
+        public Criteria andMerNoNotBetween(String value1, String value2) {
+            addCriterion("MER_NO not between", value1, value2, "merNo");
+            return (Criteria) this;
+        }
+
+        public Criteria andSonMerNoIsNull() {
+            addCriterion("SON_MER_NO is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andSonMerNoIsNotNull() {
+            addCriterion("SON_MER_NO is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andSonMerNoEqualTo(String value) {
+            addCriterion("SON_MER_NO =", value, "sonMerNo");
+            return (Criteria) this;
+        }
+
+        public Criteria andSonMerNoNotEqualTo(String value) {
+            addCriterion("SON_MER_NO <>", value, "sonMerNo");
+            return (Criteria) this;
+        }
+
+        public Criteria andSonMerNoGreaterThan(String value) {
+            addCriterion("SON_MER_NO >", value, "sonMerNo");
+            return (Criteria) this;
+        }
+
+        public Criteria andSonMerNoGreaterThanOrEqualTo(String value) {
+            addCriterion("SON_MER_NO >=", value, "sonMerNo");
+            return (Criteria) this;
+        }
+
+        public Criteria andSonMerNoLessThan(String value) {
+            addCriterion("SON_MER_NO <", value, "sonMerNo");
+            return (Criteria) this;
+        }
+
+        public Criteria andSonMerNoLessThanOrEqualTo(String value) {
+            addCriterion("SON_MER_NO <=", value, "sonMerNo");
+            return (Criteria) this;
+        }
+
+        public Criteria andSonMerNoLike(String value) {
+            addCriterion("SON_MER_NO like", value, "sonMerNo");
+            return (Criteria) this;
+        }
+
+        public Criteria andSonMerNoNotLike(String value) {
+            addCriterion("SON_MER_NO not like", value, "sonMerNo");
+            return (Criteria) this;
+        }
+
+        public Criteria andSonMerNoIn(List<String> values) {
+            addCriterion("SON_MER_NO in", values, "sonMerNo");
+            return (Criteria) this;
+        }
+
+        public Criteria andSonMerNoNotIn(List<String> values) {
+            addCriterion("SON_MER_NO not in", values, "sonMerNo");
+            return (Criteria) this;
+        }
+
+        public Criteria andSonMerNoBetween(String value1, String value2) {
+            addCriterion("SON_MER_NO between", value1, value2, "sonMerNo");
+            return (Criteria) this;
+        }
+
+        public Criteria andSonMerNoNotBetween(String value1, String value2) {
+            addCriterion("SON_MER_NO not between", value1, value2, "sonMerNo");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {
