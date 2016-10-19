@@ -10,7 +10,8 @@
     <result column="LOGO" property="logo" jdbcType="VARCHAR" />
     <result column="FRAME_PAGE_TEMPLATE" property="framePageTemplate" jdbcType="VARCHAR" />
     <result column="MER_NO" property="merNo" jdbcType="VARCHAR" />
-    <result column="SON_MER_NO" property="sonMerNo" jdbcType="VARCHAR" />
+    <result column="debit_side" property="debitSide" jdbcType="VARCHAR" />
+    <result column="receiving_side" property="receivingSide" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -72,7 +73,7 @@
   </sql>
   <sql id="Base_Column_List" >
     TENANT_ID, TENANT_NAME, TENANT_PWD, STATE, INDUSTRY_CODE, LOGO, FRAME_PAGE_TEMPLATE, 
-    MER_NO, SON_MER_NO
+    MER_NO, debit_side, receiving_side
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.ai.platform.common.dao.mapper.bo.GnTenantCriteria" >
     select
@@ -111,12 +112,12 @@
   <insert id="insert" parameterType="com.ai.platform.common.dao.mapper.bo.GnTenant" >
     insert into gn_tenant (TENANT_ID, TENANT_NAME, TENANT_PWD, 
       STATE, INDUSTRY_CODE, LOGO, 
-      FRAME_PAGE_TEMPLATE, MER_NO, SON_MER_NO
-      )
+      FRAME_PAGE_TEMPLATE, MER_NO, debit_side, 
+      receiving_side)
     values (#{tenantId,jdbcType=VARCHAR}, #{tenantName,jdbcType=VARCHAR}, #{tenantPwd,jdbcType=VARCHAR}, 
       #{state,jdbcType=VARCHAR}, #{industryCode,jdbcType=VARCHAR}, #{logo,jdbcType=VARCHAR}, 
-      #{framePageTemplate,jdbcType=VARCHAR}, #{merNo,jdbcType=VARCHAR}, #{sonMerNo,jdbcType=VARCHAR}
-      )
+      #{framePageTemplate,jdbcType=VARCHAR}, #{merNo,jdbcType=VARCHAR}, #{debitSide,jdbcType=VARCHAR}, 
+      #{receivingSide,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.ai.platform.common.dao.mapper.bo.GnTenant" >
     insert into gn_tenant
@@ -145,8 +146,11 @@
       <if test="merNo != null" >
         MER_NO,
       </if>
-      <if test="sonMerNo != null" >
-        SON_MER_NO,
+      <if test="debitSide != null" >
+        debit_side,
+      </if>
+      <if test="receivingSide != null" >
+        receiving_side,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
@@ -174,8 +178,11 @@
       <if test="merNo != null" >
         #{merNo,jdbcType=VARCHAR},
       </if>
-      <if test="sonMerNo != null" >
-        #{sonMerNo,jdbcType=VARCHAR},
+      <if test="debitSide != null" >
+        #{debitSide,jdbcType=VARCHAR},
+      </if>
+      <if test="receivingSide != null" >
+        #{receivingSide,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -212,8 +219,11 @@
       <if test="record.merNo != null" >
         MER_NO = #{record.merNo,jdbcType=VARCHAR},
       </if>
-      <if test="record.sonMerNo != null" >
-        SON_MER_NO = #{record.sonMerNo,jdbcType=VARCHAR},
+      <if test="record.debitSide != null" >
+        debit_side = #{record.debitSide,jdbcType=VARCHAR},
+      </if>
+      <if test="record.receivingSide != null" >
+        receiving_side = #{record.receivingSide,jdbcType=VARCHAR},
       </if>
     </set>
     <if test="_parameter != null" >
@@ -230,7 +240,8 @@
       LOGO = #{record.logo,jdbcType=VARCHAR},
       FRAME_PAGE_TEMPLATE = #{record.framePageTemplate,jdbcType=VARCHAR},
       MER_NO = #{record.merNo,jdbcType=VARCHAR},
-      SON_MER_NO = #{record.sonMerNo,jdbcType=VARCHAR}
+      debit_side = #{record.debitSide,jdbcType=VARCHAR},
+      receiving_side = #{record.receivingSide,jdbcType=VARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -259,8 +270,11 @@
       <if test="merNo != null" >
         MER_NO = #{merNo,jdbcType=VARCHAR},
       </if>
-      <if test="sonMerNo != null" >
-        SON_MER_NO = #{sonMerNo,jdbcType=VARCHAR},
+      <if test="debitSide != null" >
+        debit_side = #{debitSide,jdbcType=VARCHAR},
+      </if>
+      <if test="receivingSide != null" >
+        receiving_side = #{receivingSide,jdbcType=VARCHAR},
       </if>
     </set>
     where TENANT_ID = #{tenantId,jdbcType=VARCHAR}
@@ -274,7 +288,8 @@
       LOGO = #{logo,jdbcType=VARCHAR},
       FRAME_PAGE_TEMPLATE = #{framePageTemplate,jdbcType=VARCHAR},
       MER_NO = #{merNo,jdbcType=VARCHAR},
-      SON_MER_NO = #{sonMerNo,jdbcType=VARCHAR}
+      debit_side = #{debitSide,jdbcType=VARCHAR},
+      receiving_side = #{receivingSide,jdbcType=VARCHAR}
     where TENANT_ID = #{tenantId,jdbcType=VARCHAR}
   </update>
 </mapper>

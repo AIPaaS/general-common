@@ -684,73 +684,143 @@ public class GnTenantCriteria {
             return (Criteria) this;
         }
 
-        public Criteria andSonMerNoIsNull() {
-            addCriterion("SON_MER_NO is null");
+        public Criteria andDebitSideIsNull() {
+            addCriterion("debit_side is null");
             return (Criteria) this;
         }
 
-        public Criteria andSonMerNoIsNotNull() {
-            addCriterion("SON_MER_NO is not null");
+        public Criteria andDebitSideIsNotNull() {
+            addCriterion("debit_side is not null");
             return (Criteria) this;
         }
 
-        public Criteria andSonMerNoEqualTo(String value) {
-            addCriterion("SON_MER_NO =", value, "sonMerNo");
+        public Criteria andDebitSideEqualTo(String value) {
+            addCriterion("debit_side =", value, "debitSide");
             return (Criteria) this;
         }
 
-        public Criteria andSonMerNoNotEqualTo(String value) {
-            addCriterion("SON_MER_NO <>", value, "sonMerNo");
+        public Criteria andDebitSideNotEqualTo(String value) {
+            addCriterion("debit_side <>", value, "debitSide");
             return (Criteria) this;
         }
 
-        public Criteria andSonMerNoGreaterThan(String value) {
-            addCriterion("SON_MER_NO >", value, "sonMerNo");
+        public Criteria andDebitSideGreaterThan(String value) {
+            addCriterion("debit_side >", value, "debitSide");
             return (Criteria) this;
         }
 
-        public Criteria andSonMerNoGreaterThanOrEqualTo(String value) {
-            addCriterion("SON_MER_NO >=", value, "sonMerNo");
+        public Criteria andDebitSideGreaterThanOrEqualTo(String value) {
+            addCriterion("debit_side >=", value, "debitSide");
             return (Criteria) this;
         }
 
-        public Criteria andSonMerNoLessThan(String value) {
-            addCriterion("SON_MER_NO <", value, "sonMerNo");
+        public Criteria andDebitSideLessThan(String value) {
+            addCriterion("debit_side <", value, "debitSide");
             return (Criteria) this;
         }
 
-        public Criteria andSonMerNoLessThanOrEqualTo(String value) {
-            addCriterion("SON_MER_NO <=", value, "sonMerNo");
+        public Criteria andDebitSideLessThanOrEqualTo(String value) {
+            addCriterion("debit_side <=", value, "debitSide");
             return (Criteria) this;
         }
 
-        public Criteria andSonMerNoLike(String value) {
-            addCriterion("SON_MER_NO like", value, "sonMerNo");
+        public Criteria andDebitSideLike(String value) {
+            addCriterion("debit_side like", value, "debitSide");
             return (Criteria) this;
         }
 
-        public Criteria andSonMerNoNotLike(String value) {
-            addCriterion("SON_MER_NO not like", value, "sonMerNo");
+        public Criteria andDebitSideNotLike(String value) {
+            addCriterion("debit_side not like", value, "debitSide");
             return (Criteria) this;
         }
 
-        public Criteria andSonMerNoIn(List<String> values) {
-            addCriterion("SON_MER_NO in", values, "sonMerNo");
+        public Criteria andDebitSideIn(List<String> values) {
+            addCriterion("debit_side in", values, "debitSide");
             return (Criteria) this;
         }
 
-        public Criteria andSonMerNoNotIn(List<String> values) {
-            addCriterion("SON_MER_NO not in", values, "sonMerNo");
+        public Criteria andDebitSideNotIn(List<String> values) {
+            addCriterion("debit_side not in", values, "debitSide");
             return (Criteria) this;
         }
 
-        public Criteria andSonMerNoBetween(String value1, String value2) {
-            addCriterion("SON_MER_NO between", value1, value2, "sonMerNo");
+        public Criteria andDebitSideBetween(String value1, String value2) {
+            addCriterion("debit_side between", value1, value2, "debitSide");
             return (Criteria) this;
         }
 
-        public Criteria andSonMerNoNotBetween(String value1, String value2) {
-            addCriterion("SON_MER_NO not between", value1, value2, "sonMerNo");
+        public Criteria andDebitSideNotBetween(String value1, String value2) {
+            addCriterion("debit_side not between", value1, value2, "debitSide");
+            return (Criteria) this;
+        }
+
+        public Criteria andReceivingSideIsNull() {
+            addCriterion("receiving_side is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andReceivingSideIsNotNull() {
+            addCriterion("receiving_side is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andReceivingSideEqualTo(String value) {
+            addCriterion("receiving_side =", value, "receivingSide");
+            return (Criteria) this;
+        }
+
+        public Criteria andReceivingSideNotEqualTo(String value) {
+            addCriterion("receiving_side <>", value, "receivingSide");
+            return (Criteria) this;
+        }
+
+        public Criteria andReceivingSideGreaterThan(String value) {
+            addCriterion("receiving_side >", value, "receivingSide");
+            return (Criteria) this;
+        }
+
+        public Criteria andReceivingSideGreaterThanOrEqualTo(String value) {
+            addCriterion("receiving_side >=", value, "receivingSide");
+            return (Criteria) this;
+        }
+
+        public Criteria andReceivingSideLessThan(String value) {
+            addCriterion("receiving_side <", value, "receivingSide");
+            return (Criteria) this;
+        }
+
+        public Criteria andReceivingSideLessThanOrEqualTo(String value) {
+            addCriterion("receiving_side <=", value, "receivingSide");
+            return (Criteria) this;
+        }
+
+        public Criteria andReceivingSideLike(String value) {
+            addCriterion("receiving_side like", value, "receivingSide");
+            return (Criteria) this;
+        }
+
+        public Criteria andReceivingSideNotLike(String value) {
+            addCriterion("receiving_side not like", value, "receivingSide");
+            return (Criteria) this;
+        }
+
+        public Criteria andReceivingSideIn(List<String> values) {
+            addCriterion("receiving_side in", values, "receivingSide");
+            return (Criteria) this;
+        }
+
+        public Criteria andReceivingSideNotIn(List<String> values) {
+            addCriterion("receiving_side not in", values, "receivingSide");
+            return (Criteria) this;
+        }
+
+        public Criteria andReceivingSideBetween(String value1, String value2) {
+            addCriterion("receiving_side between", value1, value2, "receivingSide");
+            return (Criteria) this;
+        }
+
+        public Criteria andReceivingSideNotBetween(String value1, String value2) {
+            addCriterion("receiving_side not between", value1, value2, "receivingSide");
             return (Criteria) this;
         }
     }

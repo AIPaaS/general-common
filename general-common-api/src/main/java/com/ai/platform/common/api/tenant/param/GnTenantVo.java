@@ -44,9 +44,14 @@ public class GnTenantVo implements Serializable {
     private String merNo;
 
     /**
-     * 收款商户号
+     * 扣款方
      */
-    private String sonMerNo;
+    private String debitSide;
+
+    /**
+     * 收款方
+     */
+    private String receivingSide;
 
     public String getIndustryCode() {
         return industryCode;
@@ -96,14 +101,21 @@ public class GnTenantVo implements Serializable {
 		this.merNo = merNo;
 	}
 
-	public String getSonMerNo() {
-		return sonMerNo;
+	public String getDebitSide() {
+		return debitSide;
 	}
 
-	public void setSonMerNo(String sonMerNo) {
-		this.sonMerNo = sonMerNo;
+	public void setDebitSide(String debitSide) {
+		this.debitSide = debitSide;
 	}
-    
-    
+
+	public String getReceivingSide() {
+		return receivingSide;
+	}
+
+	public void setReceivingSide(String receivingSide) {
+		this.receivingSide = receivingSide;
+	}
+
 
 }

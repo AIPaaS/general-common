@@ -17,7 +17,9 @@ public class GnTenant {
 
     private String merNo;
 
-    private String sonMerNo;
+    private String debitSide;
+
+    private String receivingSide;
 
     public String getTenantId() {
         return tenantId;
@@ -83,11 +85,19 @@ public class GnTenant {
         this.merNo = merNo == null ? null : merNo.trim();
     }
 
-    public String getSonMerNo() {
-        return sonMerNo;
+    public String getDebitSide() {
+        return debitSide;
     }
 
-    public void setSonMerNo(String sonMerNo) {
-        this.sonMerNo = sonMerNo == null ? null : sonMerNo.trim();
+    public void setDebitSide(String debitSide) {
+        this.debitSide = debitSide == null ? null : debitSide.trim();
+    }
+
+    public String getReceivingSide() {
+        return receivingSide;
+    }
+
+    public void setReceivingSide(String receivingSide) {
+        this.receivingSide = receivingSide == null ? null : receivingSide.trim();
     }
 }
