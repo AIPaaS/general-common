@@ -38,11 +38,11 @@ public final class AreaCacheUtil {
             	return result.getAreaName();            	
             }
             else{
-            	return areaCode;
+            	return null;
             }
         } catch (Exception e) {
             logger.error("翻译区域AreaCode[{}]失败.失败原因:{}", areaCode, e);
-            return areaCode;
+            return null;
         }
     }
     public static Area getArea(String areaCode) {
