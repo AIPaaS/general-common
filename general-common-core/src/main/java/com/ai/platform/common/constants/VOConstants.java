@@ -30,11 +30,11 @@ public class VOConstants {
 		/**
 		 * 启用
 		 */
-		public static final String YES = "1";
+		public static final String YES = "0";
 		/**
 		 * 未启用
 		 */
-		public static final String NO = "0";
+		public static final String NO = "1";
 	}
 	
 	/**
