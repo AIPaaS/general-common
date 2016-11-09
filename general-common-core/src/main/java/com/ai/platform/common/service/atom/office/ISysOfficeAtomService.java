@@ -2,6 +2,8 @@ package com.ai.platform.common.service.atom.office;
 
 import java.util.List;
 
+import com.ai.opt.base.vo.PageInfo;
+import com.ai.platform.common.api.office.param.OfficeAllQueryRequest;
 import com.ai.platform.common.dao.mapper.bo.SysOffice;
 
 public interface ISysOfficeAtomService {
@@ -13,7 +15,7 @@ public interface ISysOfficeAtomService {
 	 * @param tenantId
 	 * @return
 	 */
-	List<SysOffice> selectSysOfficeAll(String tenantId,int start,int end);
+	PageInfo<SysOffice> selectSysOfficeAll(OfficeAllQueryRequest queryRequest);
 	
 	/**
 	 * 获取当前id及所有上级节点

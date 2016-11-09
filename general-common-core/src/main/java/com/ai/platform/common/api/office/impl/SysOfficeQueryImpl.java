@@ -5,6 +5,7 @@ import org.springframework.stereotype.Component;
 
 import com.ai.opt.base.exception.BusinessException;
 import com.ai.opt.base.exception.SystemException;
+import com.ai.opt.base.vo.PageInfo;
 import com.ai.platform.common.api.office.interfaces.ISysOfficeQuerySV;
 import com.ai.platform.common.api.office.param.OfficeAllQueryRequest;
 import com.ai.platform.common.api.office.param.OfficeAllQueryResponse;
@@ -14,6 +15,7 @@ import com.ai.platform.common.api.office.param.OfficeDetailQueryRequest;
 import com.ai.platform.common.api.office.param.OfficeDetailQueryResponse;
 import com.ai.platform.common.api.office.param.OfficeParentListQueryRequest;
 import com.ai.platform.common.api.office.param.OfficeParentListQueryResponse;
+import com.ai.platform.common.api.office.param.OfficeVO;
 import com.ai.platform.common.service.business.office.ISysOfficeBusinessService;
 import com.ai.platform.common.util.SystemValidateUtil;
 import com.alibaba.dubbo.config.annotation.Service;
@@ -49,7 +51,7 @@ public class SysOfficeQueryImpl implements ISysOfficeQuerySV {
 	}
 
 	@Override
-	public OfficeAllQueryResponse queryOfficeAll(OfficeAllQueryRequest queryRequest)
+	public PageInfo<OfficeVO> queryOfficeAll(OfficeAllQueryRequest queryRequest)
 			throws BusinessException, SystemException {
 		SystemValidateUtil.validateQueryOfficeAll(queryRequest);
 		return iSysofficeBusinessService.queryOfficeAll(queryRequest);

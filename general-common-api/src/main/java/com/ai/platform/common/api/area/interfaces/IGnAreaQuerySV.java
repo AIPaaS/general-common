@@ -152,7 +152,7 @@ public interface IGnAreaQuerySV {
 	 */
 	@POST
 	@Path("/getNationList")
-    List<GnAreaVo> getNationList() throws BusinessException,SystemException;
+	PageInfo<GnAreaVo> getNationList(GnAreaPageCondition areaPage) throws BusinessException,SystemException;
     
     /**
      * 小区（街道下的小区）分页查询(可过滤指定areacodeList)

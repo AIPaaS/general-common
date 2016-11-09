@@ -148,19 +148,9 @@ public class GnAreaQuerySVImpl implements IGnAreaQuerySV {
 	}
 
 	@Override
-	public List<GnAreaVo> getNationList() throws BusinessException,SystemException {
-		List<GnArea> dbList=iGnAreaBusinessService.getNationList();
-		List<GnAreaVo> resultList=null;
-		if(!CollectionUtil.isEmpty(dbList)){
-			resultList=new ArrayList<GnAreaVo>();
-			for(GnArea area : dbList){
-				GnAreaVo areavo=new GnAreaVo();
-				BeanUtils.copyProperties(areavo, area);
-				resultList.add(areavo);
-			}
-		}
-		
-		return resultList;
+	public PageInfo<GnAreaVo> getNationList(GnAreaPageCondition areaPage){
+		VoValidateUtils.validateGetAreaListByPage(areaPage);
+		return iGnAreaBusinessService.getAreaListByPage(areaPage);
 	}
 
 	@Override

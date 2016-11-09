@@ -97,11 +97,11 @@ public class SystemValidateUtil {
 		if (StringUtil.isBlank(queryRequest.getTenantId())) {
 			throw new BusinessException(ExceptCodeConstants.Special.PARAM_IS_NULL, "租户ID不能为空");
 		}
-		if (queryRequest.getLimitStart()<0) {
-			throw new BusinessException(ExceptCodeConstants.Special.PARAM_IS_NULL, "租户ID不能为空");
+		if (queryRequest.getPageNo()<1) {
+			throw new BusinessException(ExceptCodeConstants.Special.PARAM_TYPE_NOT_RIGHT, "查询页面pageNo必须大于0");
 		}
-		if (queryRequest.getLimitEnd()<0) {
-			throw new BusinessException(ExceptCodeConstants.Special.PARAM_IS_NULL, "租户ID不能为空");
+		if (queryRequest.getPageSize()<1) {
+			throw new BusinessException(ExceptCodeConstants.Special.PARAM_TYPE_NOT_RIGHT, "查询页面pageSize必须大于0");
 		}
 	}
 	

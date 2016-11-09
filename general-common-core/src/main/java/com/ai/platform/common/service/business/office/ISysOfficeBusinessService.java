@@ -1,5 +1,6 @@
 package com.ai.platform.common.service.business.office;
 
+import com.ai.opt.base.vo.PageInfo;
 import com.ai.platform.common.api.office.param.OfficeAllQueryRequest;
 import com.ai.platform.common.api.office.param.OfficeAllQueryResponse;
 import com.ai.platform.common.api.office.param.OfficeChildrenListQueryRequest;
@@ -8,6 +9,7 @@ import com.ai.platform.common.api.office.param.OfficeDetailQueryRequest;
 import com.ai.platform.common.api.office.param.OfficeDetailQueryResponse;
 import com.ai.platform.common.api.office.param.OfficeParentListQueryRequest;
 import com.ai.platform.common.api.office.param.OfficeParentListQueryResponse;
+import com.ai.platform.common.api.office.param.OfficeVO;
 
 public interface ISysOfficeBusinessService {
 	/**
@@ -36,7 +38,7 @@ public interface ISysOfficeBusinessService {
 	 * @param queryRequest
 	 * @return
 	 */
-	OfficeAllQueryResponse queryOfficeAll(OfficeAllQueryRequest queryRequest);
+	PageInfo<OfficeVO> queryOfficeAll(OfficeAllQueryRequest queryRequest);
 
 
 }

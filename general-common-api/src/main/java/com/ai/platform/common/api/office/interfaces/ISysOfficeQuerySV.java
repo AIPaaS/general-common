@@ -9,6 +9,7 @@ import javax.ws.rs.core.MediaType;
 import com.ai.opt.base.exception.BusinessException;
 import com.ai.opt.base.exception.SystemException;
 import com.ai.opt.base.vo.BaseInfo;
+import com.ai.opt.base.vo.PageInfo;
 import com.ai.platform.common.api.office.param.OfficeAllQueryRequest;
 import com.ai.platform.common.api.office.param.OfficeAllQueryResponse;
 import com.ai.platform.common.api.office.param.OfficeChildrenListQueryRequest;
@@ -17,6 +18,7 @@ import com.ai.platform.common.api.office.param.OfficeDetailQueryRequest;
 import com.ai.platform.common.api.office.param.OfficeDetailQueryResponse;
 import com.ai.platform.common.api.office.param.OfficeParentListQueryRequest;
 import com.ai.platform.common.api.office.param.OfficeParentListQueryResponse;
+import com.ai.platform.common.api.office.param.OfficeVO;
 
 /**
  * 组织机构对外接口
@@ -78,6 +80,6 @@ public interface ISysOfficeQuerySV {
 	 */
 	@POST
 	@Path("/queryOfficeAll")
-	OfficeAllQueryResponse queryOfficeAll(OfficeAllQueryRequest queryRequest) throws BusinessException,SystemException;
+	PageInfo<OfficeVO> queryOfficeAll(OfficeAllQueryRequest queryRequest) throws BusinessException,SystemException;
 
 }

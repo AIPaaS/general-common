@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.ai.opt.base.vo.PageInfo;
 import com.ai.opt.base.vo.ResponseHeader;
 import com.ai.opt.sdk.util.BeanUtils;
 import com.ai.opt.sdk.util.CollectionUtil;
@@ -22,6 +23,7 @@ import com.ai.platform.common.api.office.param.OfficeParentListQueryRequest;
 import com.ai.platform.common.api.office.param.OfficeParentListQueryResponse;
 import com.ai.platform.common.api.office.param.OfficeVO;
 import com.ai.platform.common.constants.ResultCodeConstants;
+import com.ai.platform.common.dao.mapper.bo.GnArea;
 import com.ai.platform.common.dao.mapper.bo.SysOffice;
 import com.ai.platform.common.service.atom.office.ISysOfficeAtomService;
 import com.ai.platform.common.service.business.office.ISysOfficeBusinessService;
@@ -112,27 +114,22 @@ public class SysOfficeBusinessService implements ISysOfficeBusinessService{
 	}
 
 	@Override
-	public OfficeAllQueryResponse queryOfficeAll(OfficeAllQueryRequest queryRequest) {
-		OfficeAllQueryResponse officeAllQueryResponse = new OfficeAllQueryResponse();
-		// 获取叶子节点
-		List<SysOffice> allOfficeList = ISysOfficeAtomService
-				.selectSysOfficeAll(queryRequest.getTenantId(),queryRequest.getLimitStart(),queryRequest.getLimitEnd());
-		if (!CollectionUtil.isEmpty(allOfficeList)) {
-			String allOfficeListJson = JSonUtil.toJSon(allOfficeList);
-			Gson gson = new Gson();
-			List<OfficeVO> allOffice = gson.fromJson(allOfficeListJson,
-					new TypeToken<List<OfficeVO>>() {
-					}.getType());
-			officeAllQueryResponse.setAllOffice(allOffice);
-			ResponseHeader responseHeader = new ResponseHeader(true,
-					ResultCodeConstants.SUCCESS_CODE, "查询成功");
-			;
-			officeAllQueryResponse.setResponseHeader(responseHeader);
-		} else {
-			ResponseHeader responseHeader = new ResponseHeader(true,
-					ResultCodeConstants.NULL_CODE, "无数据");
-			officeAllQueryResponse.setResponseHeader(responseHeader);
+	public PageInfo<OfficeVO> queryOfficeAll(OfficeAllQueryRequest queryRequest) {
+		PageInfo<OfficeVO> pageResult=new PageInfo<OfficeVO>();
+		PageInfo<SysOffice> pageInfo = ISysOfficeAtomService.selectSysOfficeAll(queryRequest);
+		pageResult.setCount(pageInfo.getCount());
+		pageResult.setPageSize(pageInfo.getPageSize());
+		pageResult.setPageNo(pageInfo.getPageNo());
+		List<OfficeVO> officeVOList=new ArrayList<OfficeVO>();
+		if(pageInfo.getResult()!=null&&!CollectionUtil.isEmpty(pageInfo.getResult())){
+			for(SysOffice office:pageInfo.getResult()){
+				OfficeVO officeVO=new OfficeVO();
+				BeanUtils.copyProperties(officeVO, office);
+				officeVOList.add(officeVO);
+			}
+			pageResult.setResult(officeVOList);
 		}
-		return officeAllQueryResponse;
+		return pageResult;
+		
 	}
 }

@@ -7,6 +7,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.ai.opt.base.vo.BaseInfo;
+import com.ai.opt.base.vo.PageInfo;
 import com.ai.paas.ipaas.util.JSonUtil;
 import com.ai.platform.common.api.office.interfaces.ISysOfficeQuerySV;
 import com.ai.platform.common.api.office.param.OfficeAllQueryRequest;
@@ -17,6 +18,7 @@ import com.ai.platform.common.api.office.param.OfficeDetailQueryRequest;
 import com.ai.platform.common.api.office.param.OfficeDetailQueryResponse;
 import com.ai.platform.common.api.office.param.OfficeParentListQueryRequest;
 import com.ai.platform.common.api.office.param.OfficeParentListQueryResponse;
+import com.ai.platform.common.api.office.param.OfficeVO;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration({ "/context/core-context.xml" })
@@ -54,11 +56,10 @@ public class OfficeQueryTest {
 	public void queryOfficeAll(){
 		OfficeAllQueryRequest queryRequest = new OfficeAllQueryRequest();
 		queryRequest.setTenantId("changhong");
-		queryRequest.setLimitStart(0);
-		queryRequest.setLimitEnd(10);
-		OfficeAllQueryResponse queryOfficeAll = sv.queryOfficeAll(queryRequest );
-		System.out.println(JSonUtil.toJSon(queryOfficeAll));
-		System.out.println(queryOfficeAll.getAllOffice().size());
+		queryRequest.setPageNo(1);
+		queryRequest.setPageSize(10);
+		PageInfo<OfficeVO> pageINfo = sv.queryOfficeAll(queryRequest );
+		System.out.println(JSonUtil.toJSon(pageINfo));
 	}
     
     
