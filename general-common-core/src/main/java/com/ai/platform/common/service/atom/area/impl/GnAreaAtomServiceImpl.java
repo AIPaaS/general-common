@@ -211,6 +211,9 @@ public class GnAreaAtomServiceImpl implements IGnAreaAtomService {
 		if (!StringUtil.isBlank(areaPage.getProvinceCode())) {
 			criteria.andProvinceCodeEqualTo(areaPage.getProvinceCode());
 		}
+		if (!StringUtil.isBlank(areaPage.getTenantId())) {
+			criteria.andTenantIdEqualTo(areaPage.getTenantId());
+		}
 		if (!StringUtil.isBlank(areaPage.getCityCode())) {
 			criteria.andCityCodeEqualTo(areaPage.getCityCode());
 		}

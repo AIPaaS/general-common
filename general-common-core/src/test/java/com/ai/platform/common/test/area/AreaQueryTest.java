@@ -20,12 +20,12 @@ public class AreaQueryTest {
 
 	
 	@Test
-	public void queryOfficeAll(){
+	public void queryAreaAll(){
 		
 		GnAreaPageCondition queryRequest = new GnAreaPageCondition();
 		queryRequest.setTenantId("changhong");
 		queryRequest.setPageNo(1);
-		queryRequest.setPageSize(10);
+		queryRequest.setPageSize(5);
 		PageInfo<GnAreaVo> pageINfo = sv.getNationList(queryRequest );
 		System.out.println(JSonUtil.toJSon(pageINfo));
 	}
