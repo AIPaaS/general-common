@@ -5,8 +5,8 @@ import org.springframework.stereotype.Component;
 
 import com.ai.opt.base.exception.BusinessException;
 import com.ai.opt.base.exception.SystemException;
-import com.ai.opt.base.vo.BaseInfo;
 import com.ai.platform.common.api.office.interfaces.ISysOfficeQuerySV;
+import com.ai.platform.common.api.office.param.OfficeAllQueryRequest;
 import com.ai.platform.common.api.office.param.OfficeAllQueryResponse;
 import com.ai.platform.common.api.office.param.OfficeChildrenListQueryRequest;
 import com.ai.platform.common.api.office.param.OfficeChildrenListQueryResponse;
@@ -49,7 +49,7 @@ public class SysOfficeQueryImpl implements ISysOfficeQuerySV {
 	}
 
 	@Override
-	public OfficeAllQueryResponse queryOfficeAll(BaseInfo queryRequest)
+	public OfficeAllQueryResponse queryOfficeAll(OfficeAllQueryRequest queryRequest)
 			throws BusinessException, SystemException {
 		SystemValidateUtil.validateQueryOfficeAll(queryRequest);
 		return iSysofficeBusinessService.queryOfficeAll(queryRequest);

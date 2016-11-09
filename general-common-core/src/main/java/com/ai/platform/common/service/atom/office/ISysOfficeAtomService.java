@@ -13,7 +13,7 @@ public interface ISysOfficeAtomService {
 	 * @param tenantId
 	 * @return
 	 */
-	List<SysOffice> selectSysOfficeAll(String tenantId);
+	List<SysOffice> selectSysOfficeAll(String tenantId,int start,int end);
 	
 	/**
 	 * 获取当前id及所有上级节点

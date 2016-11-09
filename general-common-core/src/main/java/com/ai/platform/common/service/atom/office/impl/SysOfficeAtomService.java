@@ -44,12 +44,14 @@ public class SysOfficeAtomService implements ISysOfficeAtomService{
 	}
 
 	@Override
-	public List<SysOffice> selectSysOfficeAll(String tenantId) {
+	public List<SysOffice> selectSysOfficeAll(String tenantId,int start,int end) {
 		SysOfficeCriteria example = new SysOfficeCriteria();
 		Criteria officeCriteria = example.createCriteria();
 		officeCriteria.andTenantIdEqualTo(tenantId.trim());
 		officeCriteria.andUseableEqualTo(UseableFlagConstant.YES);
 		officeCriteria.andDelFlagEqualTo(DeleteFlagConstant.NO);
+		example.setLimitStart(start);
+		example.setLimitEnd(end);
 		return MapperFactory.getSysOfficeMapper().selectByExample(example);
 	}
 

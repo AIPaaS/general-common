@@ -8,11 +8,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.ai.opt.base.vo.BaseInfo;
 import com.ai.opt.base.vo.ResponseHeader;
 import com.ai.opt.sdk.util.BeanUtils;
 import com.ai.opt.sdk.util.CollectionUtil;
 import com.ai.paas.ipaas.util.JSonUtil;
+import com.ai.platform.common.api.office.param.OfficeAllQueryRequest;
 import com.ai.platform.common.api.office.param.OfficeAllQueryResponse;
 import com.ai.platform.common.api.office.param.OfficeChildrenListQueryRequest;
 import com.ai.platform.common.api.office.param.OfficeChildrenListQueryResponse;
@@ -112,11 +112,11 @@ public class SysOfficeBusinessService implements ISysOfficeBusinessService{
 	}
 
 	@Override
-	public OfficeAllQueryResponse queryOfficeAll(BaseInfo queryRequest) {
+	public OfficeAllQueryResponse queryOfficeAll(OfficeAllQueryRequest queryRequest) {
 		OfficeAllQueryResponse officeAllQueryResponse = new OfficeAllQueryResponse();
 		// 获取叶子节点
 		List<SysOffice> allOfficeList = ISysOfficeAtomService
-				.selectSysOfficeAll(queryRequest.getTenantId());
+				.selectSysOfficeAll(queryRequest.getTenantId(),queryRequest.getLimitStart(),queryRequest.getLimitEnd());
 		if (!CollectionUtil.isEmpty(allOfficeList)) {
 			String allOfficeListJson = JSonUtil.toJSon(allOfficeList);
 			Gson gson = new Gson();

@@ -1,6 +1,6 @@
 package com.ai.platform.common.service.business.office;
 
-import com.ai.opt.base.vo.BaseInfo;
+import com.ai.platform.common.api.office.param.OfficeAllQueryRequest;
 import com.ai.platform.common.api.office.param.OfficeAllQueryResponse;
 import com.ai.platform.common.api.office.param.OfficeChildrenListQueryRequest;
 import com.ai.platform.common.api.office.param.OfficeChildrenListQueryResponse;
@@ -36,7 +36,7 @@ public interface ISysOfficeBusinessService {
 	 * @param queryRequest
 	 * @return
 	 */
-	OfficeAllQueryResponse queryOfficeAll(BaseInfo queryRequest);
+	OfficeAllQueryResponse queryOfficeAll(OfficeAllQueryRequest queryRequest);
 
 
 }

@@ -1,10 +1,10 @@
 package com.ai.platform.common.util;
 
 import com.ai.opt.base.exception.BusinessException;
-import com.ai.opt.base.vo.BaseInfo;
 import com.ai.opt.sdk.constants.ExceptCodeConstants;
 import com.ai.opt.sdk.util.StringUtil;
 import com.ai.platform.common.api.menu.param.SysMenuListQueryRequest;
+import com.ai.platform.common.api.office.param.OfficeAllQueryRequest;
 import com.ai.platform.common.api.office.param.OfficeChildrenListQueryRequest;
 import com.ai.platform.common.api.office.param.OfficeDetailQueryRequest;
 import com.ai.platform.common.api.office.param.OfficeParentListQueryRequest;
@@ -90,11 +90,17 @@ public class SystemValidateUtil {
 		}
 	}
 	
-	public static void validateQueryOfficeAll(BaseInfo queryRequest) {
+	public static void validateQueryOfficeAll(OfficeAllQueryRequest queryRequest) {
 		if (queryRequest == null) {
 			throw new BusinessException(ExceptCodeConstants.Special.PARAM_IS_NULL, "参数对象不能为空");
 		}
 		if (StringUtil.isBlank(queryRequest.getTenantId())) {
+			throw new BusinessException(ExceptCodeConstants.Special.PARAM_IS_NULL, "租户ID不能为空");
+		}
+		if (queryRequest.getLimitStart()<0) {
+			throw new BusinessException(ExceptCodeConstants.Special.PARAM_IS_NULL, "租户ID不能为空");
+		}
+		if (queryRequest.getLimitEnd()<0) {
 			throw new BusinessException(ExceptCodeConstants.Special.PARAM_IS_NULL, "租户ID不能为空");
 		}
 	}

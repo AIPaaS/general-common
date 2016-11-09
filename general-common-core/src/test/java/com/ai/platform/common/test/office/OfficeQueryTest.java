@@ -9,6 +9,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import com.ai.opt.base.vo.BaseInfo;
 import com.ai.paas.ipaas.util.JSonUtil;
 import com.ai.platform.common.api.office.interfaces.ISysOfficeQuerySV;
+import com.ai.platform.common.api.office.param.OfficeAllQueryRequest;
 import com.ai.platform.common.api.office.param.OfficeAllQueryResponse;
 import com.ai.platform.common.api.office.param.OfficeChildrenListQueryRequest;
 import com.ai.platform.common.api.office.param.OfficeChildrenListQueryResponse;
@@ -51,8 +52,10 @@ public class OfficeQueryTest {
 	}
 	@Test
 	public void queryOfficeAll(){
-		BaseInfo queryRequest = new BaseInfo();
-		queryRequest.setTenantId("SLP");
+		OfficeAllQueryRequest queryRequest = new OfficeAllQueryRequest();
+		queryRequest.setTenantId("changhong");
+		queryRequest.setLimitStart(0);
+		queryRequest.setLimitEnd(10);
 		OfficeAllQueryResponse queryOfficeAll = sv.queryOfficeAll(queryRequest );
 		System.out.println(JSonUtil.toJSon(queryOfficeAll));
 		System.out.println(queryOfficeAll.getAllOffice().size());
