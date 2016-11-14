@@ -23,7 +23,7 @@ public class AreaQueryTest {
 	public void queryAreaAll(){
 		
 		GnAreaPageCondition queryRequest = new GnAreaPageCondition();
-		queryRequest.setTenantId("changhong");
+		queryRequest.setTenantId("ALL");
 		queryRequest.setPageNo(1);
 		queryRequest.setPageSize(5);
 		PageInfo<GnAreaVo> pageINfo = sv.getNationList(queryRequest );

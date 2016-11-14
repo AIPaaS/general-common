@@ -207,7 +207,7 @@ public class GnAreaAtomServiceImpl implements IGnAreaAtomService {
 		sql.setLimitEnd(limitEnd);
 		GnAreaCriteria.Criteria criteria = sql.or();
 		criteria.andStateEqualTo(Constants.AreaState.ACTIVITY);
-		criteria.andAreaLevelEqualTo(AreaLevel.AREA_LEVEL.getLevelValue());
+//		criteria.andAreaLevelEqualTo(AreaLevel.AREA_LEVEL.getLevelValue());
 		if (!StringUtil.isBlank(areaPage.getProvinceCode())) {
 			criteria.andProvinceCodeEqualTo(areaPage.getProvinceCode());
 		}
