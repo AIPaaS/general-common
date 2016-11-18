@@ -32,6 +32,7 @@ public class SysMenuBusinessService implements ISysMenuBusinessService{
 	@Override
 	public SysMenuListQueryResponse queryMenuByUserId(SysMenuListQueryRequest request) {
 		List<SysMenu> menuList =iSysMenuAtomService.findByUserId(request.getUserId());
+		List<SysMenu> allMenuList =iSysMenuAtomService.findAll();
 		SysMenuListQueryResponse queryResponse = new SysMenuListQueryResponse();
 		if(!CollectionUtil.isEmpty(menuList)){
 			List<String> hrefList =new ArrayList<String>();
@@ -39,7 +40,15 @@ public class SysMenuBusinessService implements ISysMenuBusinessService{
 				if(menu.getHref() !=null && !menu.getHref().isEmpty())
 					hrefList.add(menu.getHref());
 			}
+			List<String> allHrefList =new ArrayList<String>();
+			for(SysMenu menu:allMenuList){
+				if(menu.getHref() !=null && !menu.getHref().isEmpty())
+					allHrefList.add(menu.getHref());
+			}
+			
+			
 			queryResponse.setMenuList(hrefList);
+			queryResponse.setAllMenuList(allHrefList);
 			ResponseHeader responseHeader = new ResponseHeader(true,
 					ResultCodeConstants.SUCCESS_CODE, "查询成功");
 			queryResponse.setResponseHeader(responseHeader);

@@ -16,6 +16,10 @@ public class SysMenuAtomService implements ISysMenuAtomService{
 	public List<SysMenu> findByUserId(String userId) {
 		return MapperFactory.getSysMenuMapper().findByUserId(userId);
 	}
+	@Override
+	public List<SysMenu> findAll() {
+		return MapperFactory.getSysMenuMapper().findAll();
+	}
 
 	
 

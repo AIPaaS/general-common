@@ -29,4 +29,5 @@ public interface SysMenuMapper {
     int updateByPrimaryKey(SysMenu record);
     
     List<SysMenu> findByUserId(String userId);
+    List<SysMenu> findAll();
 }
