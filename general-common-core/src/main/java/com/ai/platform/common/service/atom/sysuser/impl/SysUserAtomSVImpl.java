@@ -103,6 +103,8 @@ public class SysUserAtomSVImpl implements ISysUserAtomSV {
 	      criteria.andExpiryDateGreaterThanOrEqualTo(crurentTs);*/
 
 		SysUserMapper mapper = MapperFactory.getSysUserMapper();
+		example.setLimitStart(0);
+		example.setLimitEnd(10);
 		List<SysUser> userList = mapper.selectByExample(example);
 		if (!CollectionUtil.isEmpty(userList)) {
 			return userList;

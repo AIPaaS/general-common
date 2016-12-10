@@ -61,8 +61,10 @@ public class SysOfficeAtomService implements ISysOfficeAtomService{
 		officeCriteria.andDelFlagEqualTo(DeleteFlagConstant.NO);
 		int limitStart = (queryRequest.getPageNo() - 1) * queryRequest.getPageSize();
 		int limitEnd = queryRequest.getPageSize();
-		example.setLimitStart(limitStart);
-		example.setLimitEnd(limitEnd);
+//		example.setLimitStart(limitStart);
+//		example.setLimitEnd(limitEnd);
+		example.setLimitStart(0);
+		example.setLimitEnd(10);
 		List<SysOffice> dblist= MapperFactory.getSysOfficeMapper().selectByExample(example);
 		// 总记录数
 		int totalCount =MapperFactory.getSysOfficeMapper().countByExample(example);
@@ -91,6 +93,8 @@ public class SysOfficeAtomService implements ISysOfficeAtomService{
 		officeCriteria.andUseableEqualTo(UseableFlagConstant.YES);
 		officeCriteria.andDelFlagEqualTo(DeleteFlagConstant.NO);
 		officeCriteria.andParentIdEqualTo(id.trim());
+		example.setLimitStart(0);
+		example.setLimitEnd(10);
 		List<SysOffice> selectByExample = MapperFactory.getSysOfficeMapper().selectByExample(example);
 		if(selectByExample != null){
 			OfficeList.addAll(selectByExample);

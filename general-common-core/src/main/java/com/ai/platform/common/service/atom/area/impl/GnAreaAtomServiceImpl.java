@@ -203,8 +203,10 @@ public class GnAreaAtomServiceImpl implements IGnAreaAtomService {
 		GnAreaCriteria sql = new GnAreaCriteria();
 		int limitStart = (areaPage.getPageNo() - 1) * areaPage.getPageSize();
 		int limitEnd = areaPage.getPageSize();
-		sql.setLimitStart(limitStart);
-		sql.setLimitEnd(limitEnd);
+//		sql.setLimitStart(limitStart);
+//		sql.setLimitEnd(limitEnd);
+		sql.setLimitStart(0);
+		sql.setLimitEnd(10);
 		GnAreaCriteria.Criteria criteria = sql.or();
 		criteria.andStateEqualTo(Constants.AreaState.ACTIVITY);
 //		criteria.andAreaLevelEqualTo(AreaLevel.AREA_LEVEL.getLevelValue());
