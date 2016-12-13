@@ -51,6 +51,10 @@ public class SysUserBusiSVImpl implements ISysUserBusiSV {
 		    responseHeader.setResultMessage("无数据");
 		    response.setResponseHeader(responseHeader);
 		}
+		try {
+			Thread.sleep(20);
+		} catch (InterruptedException e) {
+		}
 		return response;
 	}
 
