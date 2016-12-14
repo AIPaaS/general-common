@@ -27,8 +27,7 @@ public class GnAreaCache extends AbstractCache {
     private static final int PAGE_SIZE = 2000;
     @Override
     public void write() throws Exception {
-    	
-    	cacheClient.set(CacheNSMapper.CACHE_GN_AREA, "");
+    	cacheClient.del(CacheNSMapper.CACHE_GN_AREA);
         int totalSize = iGnAreaAtomService.getAreaCount();
        
         int totalPages = (totalSize + PAGE_SIZE - 1) / PAGE_SIZE;
