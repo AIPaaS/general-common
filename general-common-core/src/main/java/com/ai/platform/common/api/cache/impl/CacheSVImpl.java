@@ -2,6 +2,8 @@ package com.ai.platform.common.api.cache.impl;
 
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 import com.ai.opt.base.exception.BusinessException;
@@ -27,14 +29,15 @@ import com.alibaba.dubbo.config.annotation.Service;
 @Service
 @Component
 public class CacheSVImpl implements ICacheSV {
-
+	private static final Logger logger = LoggerFactory.getLogger(CacheSVImpl.class);
 	@Override
 	public String getAreaName(String areaCode)
 			throws BusinessException,SystemException {
+		logger.info("getAreaName start:"+System.currentTimeMillis());
         if (StringUtil.isBlank(areaCode)) {
             throw new BusinessException(ExceptCodeConstants.Special.PARAM_IS_NULL, "获取参数失败:区域编码不能为空");
         }
-        
+        logger.info("getAreaName end:"+System.currentTimeMillis());
 		return AreaCacheUtil.getAreaName( areaCode);
 	}
 

@@ -3,6 +3,8 @@ package com.ai.platform.common.api.area.impl;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
@@ -31,7 +33,7 @@ public class GnAreaQuerySVImpl implements IGnAreaQuerySV {
 
     @Autowired
     private IGnAreaBusinessService iGnAreaBusinessService;
-
+    private static final Logger logger = LoggerFactory.getLogger(GnAreaQuerySVImpl.class);
     @Override
     public GnAreaVo selectByID(GnAreaCondition condition) throws BusinessException,SystemException {
         if (StringUtils.isEmpty(condition.getAreaCode())) {
@@ -45,11 +47,13 @@ public class GnAreaQuerySVImpl implements IGnAreaQuerySV {
 
     @Override
     public GnAreaVo queryGnArea(String areaCode) throws BusinessException,SystemException {
+    	logger.info("queryGnArea:"+System.currentTimeMillis());
         if (StringUtils.isEmpty(areaCode)) {
             throw new BusinessException(ExceptCodeConstants.Special.PARAM_IS_NULL, "区域编码不能为空");
         }
         GnAreaVo areavo=new GnAreaVo();
         BeanUtils.copyProperties(areavo, iGnAreaBusinessService.selectByID(areaCode));
+        logger.info("queryGnArea:"+System.currentTimeMillis());
         return areavo;
     }
 
