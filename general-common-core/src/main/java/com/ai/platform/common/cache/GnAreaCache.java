@@ -10,13 +10,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.ai.opt.sdk.cache.base.AbstractCache;
+import com.ai.paas.ipaas.mcs.interfaces.ICacheClient;
+import com.ai.platform.common.constants.CacheNSMapper;
 import com.ai.platform.common.dao.mapper.bo.GnArea;
 import com.ai.platform.common.service.atom.area.IGnAreaAtomService;
+import com.ai.platform.common.util.CacheFactoryUtil;
 
 @Component
 public class GnAreaCache extends AbstractCache {
     private static final Logger logger = LoggerFactory.getLogger(GnAreaCache.class);
-
+    ICacheClient cacheClient = CacheFactoryUtil.getCacheClient(CacheNSMapper.CACHE_GN_AREA);
     @Autowired
     private IGnAreaAtomService iGnAreaAtomService;
     
@@ -24,7 +27,8 @@ public class GnAreaCache extends AbstractCache {
     private static final int PAGE_SIZE = 2000;
     @Override
     public void write() throws Exception {
-
+    	
+    	cacheClient.set(CacheNSMapper.CACHE_GN_AREA, "");
         int totalSize = iGnAreaAtomService.getAreaCount();
        
         int totalPages = (totalSize + PAGE_SIZE - 1) / PAGE_SIZE;
