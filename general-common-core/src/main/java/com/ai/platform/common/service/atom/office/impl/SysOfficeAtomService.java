@@ -7,16 +7,12 @@ import org.springframework.stereotype.Component;
 
 import com.ai.opt.base.vo.PageInfo;
 import com.ai.platform.common.api.office.param.OfficeAllQueryRequest;
-import com.ai.platform.common.api.office.param.OfficeVO;
 import com.ai.platform.common.constants.VOConstants.DeleteFlagConstant;
 import com.ai.platform.common.constants.VOConstants.UseableFlagConstant;
-import com.ai.platform.common.dao.mapper.bo.GnArea;
-import com.ai.platform.common.dao.mapper.bo.GnAreaCriteria;
 import com.ai.platform.common.dao.mapper.bo.SysOffice;
 import com.ai.platform.common.dao.mapper.bo.SysOfficeCriteria;
 import com.ai.platform.common.dao.mapper.bo.SysOfficeCriteria.Criteria;
 import com.ai.platform.common.dao.mapper.factory.MapperFactory;
-import com.ai.platform.common.dao.mapper.interfaces.GnAreaMapper;
 import com.ai.platform.common.service.atom.office.ISysOfficeAtomService;
 
 @Component

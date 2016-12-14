@@ -4,6 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.util.StringUtils;
 
+import com.ai.opt.sdk.components.mcs.MCSClientFactory;
 import com.ai.paas.ipaas.mcs.interfaces.ICacheClient;
 import com.ai.paas.ipaas.util.StringUtil;
 import com.ai.platform.common.api.cache.param.Area;
@@ -24,14 +25,14 @@ public final class AreaCacheUtil {
     }
 
     private static final Logger logger = LoggerFactory.getLogger(AreaCacheUtil.class);
-
+    private static ICacheClient cacheClient = MCSClientFactory.getCacheClient(CacheNSMapper.CACHE_GN_AREA);
+    
     public static String getAreaName(String areaCode) {
         try {
             if (StringUtils.isEmpty(areaCode)) {
                 return null;
             }
             String key=areaCode.toUpperCase();
-            ICacheClient cacheClient = CacheFactoryUtil.getCacheClient(CacheNSMapper.CACHE_GN_AREA);
             String data=cacheClient.hget(CacheNSMapper.CACHE_GN_AREA, key);
             GnArea result = JSON.parseObject(data, GnArea.class);
             if(result!=null){
