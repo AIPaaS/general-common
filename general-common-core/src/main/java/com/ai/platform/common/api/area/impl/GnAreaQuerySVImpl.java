@@ -48,9 +48,9 @@ public class GnAreaQuerySVImpl implements IGnAreaQuerySV {
         if (StringUtils.isEmpty(areaCode)) {
             throw new BusinessException(ExceptCodeConstants.Special.PARAM_IS_NULL, "区域编码不能为空");
         }
-        Gson gson = new Gson();
-        return gson.fromJson(gson.toJson(iGnAreaBusinessService.selectByID(areaCode)),
-                GnAreaVo.class);
+        GnAreaVo areavo=new GnAreaVo();
+        BeanUtils.copyProperties(areavo, iGnAreaBusinessService.selectByID(areaCode));
+        return areavo;
     }
 
 	@Override

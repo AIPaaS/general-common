@@ -94,7 +94,7 @@ public class SysOfficeAtomService implements ISysOfficeAtomService{
 		officeCriteria.andDelFlagEqualTo(DeleteFlagConstant.NO);
 		officeCriteria.andParentIdEqualTo(id.trim());
 		example.setLimitStart(0);
-		example.setLimitEnd(10);
+		example.setLimitEnd(5);
 		List<SysOffice> selectByExample = MapperFactory.getSysOfficeMapper().selectByExample(example);
 		if(selectByExample != null){
 			OfficeList.addAll(selectByExample);

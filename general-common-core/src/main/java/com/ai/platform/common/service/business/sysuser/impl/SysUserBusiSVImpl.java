@@ -52,7 +52,7 @@ public class SysUserBusiSVImpl implements ISysUserBusiSV {
 		    response.setResponseHeader(responseHeader);
 		}
 		try {
-			Thread.sleep(20);
+			Thread.sleep(35);
 		} catch (InterruptedException e) {
 		}
 		return response;
