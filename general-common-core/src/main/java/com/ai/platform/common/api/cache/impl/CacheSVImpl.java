@@ -8,19 +8,25 @@ import org.springframework.stereotype.Component;
 
 import com.ai.opt.base.exception.BusinessException;
 import com.ai.opt.base.exception.SystemException;
+import com.ai.opt.base.vo.ResponseHeader;
 import com.ai.opt.sdk.constants.ExceptCodeConstants;
 import com.ai.opt.sdk.util.BeanUtils;
 import com.ai.opt.sdk.util.CollectionUtil;
 import com.ai.paas.ipaas.util.StringUtil;
 import com.ai.platform.common.api.cache.interfaces.ICacheSV;
 import com.ai.platform.common.api.cache.param.Area;
+import com.ai.platform.common.api.cache.param.AreaNameQueryRequest;
+import com.ai.platform.common.api.cache.param.AreaNameQueryResponse;
 import com.ai.platform.common.api.cache.param.PhoneCond;
 import com.ai.platform.common.api.cache.param.ServiceNumCache;
 import com.ai.platform.common.api.cache.param.SysParam;
 import com.ai.platform.common.api.cache.param.SysParamMultiCond;
 import com.ai.platform.common.api.cache.param.SysParamSingleCond;
 import com.ai.platform.common.api.servicenum.param.ServiceNum;
+import com.ai.platform.common.api.sysuser.param.SysUserQueryResponse;
 import com.ai.platform.common.constants.Constants;
+import com.ai.platform.common.constants.ResultCodeConstants;
+import com.ai.platform.common.dao.mapper.bo.SysUser;
 import com.ai.platform.common.util.AreaCacheUtil;
 import com.ai.platform.common.util.ServiceNumCacheUtil;
 import com.ai.platform.common.util.SysParamUtil;
@@ -124,6 +130,32 @@ public class CacheSVImpl implements ICacheSV {
 			return null;
 		}
 		
+	}
+
+	@Override
+	public AreaNameQueryResponse getAreaNameByAreaCode(AreaNameQueryRequest request) throws BusinessException, SystemException {
+		if (StringUtil.isBlank(request.getAreaCode())) {
+            throw new BusinessException(ExceptCodeConstants.Special.PARAM_IS_NULL, "获取参数失败:区域编码不能为空");
+        }
+		Area area =  AreaCacheUtil.getArea( request.getAreaCode());
+		AreaNameQueryResponse  response;
+		if(area!=null){
+			response =new AreaNameQueryResponse();
+			response.setAreaName(area.getAreaName());
+			ResponseHeader responseHeader = new ResponseHeader();
+		    responseHeader.setIsSuccess(true);
+		    responseHeader.setResultCode(ResultCodeConstants.SUCCESS_CODE);
+		    responseHeader.setResultMessage("查询成功");
+		    response.setResponseHeader(responseHeader);
+		}else{
+			response =new AreaNameQueryResponse();
+			ResponseHeader responseHeader = new ResponseHeader();
+		    responseHeader.setIsSuccess(true);
+		    responseHeader.setResultCode(ResultCodeConstants.NULL_CODE);
+		    responseHeader.setResultMessage("无数据");
+		    response.setResponseHeader(responseHeader);
+		}
+		return response;
 	}
 
 

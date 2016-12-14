@@ -11,6 +11,8 @@ import javax.ws.rs.core.MediaType;
 import com.ai.opt.base.exception.BusinessException;
 import com.ai.opt.base.exception.SystemException;
 import com.ai.platform.common.api.cache.param.Area;
+import com.ai.platform.common.api.cache.param.AreaNameQueryRequest;
+import com.ai.platform.common.api.cache.param.AreaNameQueryResponse;
 import com.ai.platform.common.api.cache.param.PhoneCond;
 import com.ai.platform.common.api.cache.param.ServiceNumCache;
 import com.ai.platform.common.api.cache.param.SysParam;
@@ -91,6 +93,12 @@ public interface ICacheSV {
 	@POST
 	@Path("/getArea")
     public Area getArea(String areaCode) throws BusinessException,SystemException;
+	
+	
+	@POST
+	@Path("/getAreaNameByAreaCode")
+    public AreaNameQueryResponse getAreaNameByAreaCode(AreaNameQueryRequest request) throws BusinessException,SystemException;
+	
 	
 	/**
 	 * 获取手机号码归属地
