@@ -6,13 +6,19 @@ allprojects {
     ext {
     	profile=project.hasProperty('profile')? (project['profile']==""?"aic-dev":project['profile']) : "aic-dev"
         moduleVersion = "1.0-SNAPSHOT"
-        optBaseVersion = "1.0-SNAPSHOT"
+        optBaseVersion = "1.0.1-SNAPSHOT"
         builtBy = "gradle 2.2"
         publishUserName = "runnerdev"
         publishUserPassword = "runnerdev"
         publishURL = "http://10.1.228.199:18081/nexus/content/repositories/snapshots/"
-        
         mavenPublicURL = "http://10.1.228.199:18081/nexus/content/groups/public/"
+        
+        /*
+        publishUserName = "admin"
+        publishUserPassword = "admin123"
+        publishURL = "http://202.98.157.5:8003/nexus/content/repositories/upSnapshots/"
+        mavenPublicURL = "http://202.98.157.5:8003/nexus/content/groups/public/"
+        */
     }
 
     compileJava.dependsOn clean
