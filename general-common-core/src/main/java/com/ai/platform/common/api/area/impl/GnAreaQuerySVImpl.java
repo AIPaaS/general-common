@@ -148,13 +148,41 @@ public class GnAreaQuerySVImpl implements IGnAreaQuerySV {
 	public PageInfo<GnAreaVo> getAreaListByPage(GnAreaPageCondition areaPage)
 			throws BusinessException,SystemException {
 		VoValidateUtils.validateGetAreaListByPage(areaPage);
-		return iGnAreaBusinessService.getAreaListByPage(areaPage);
+		PageInfo<GnAreaVo> pageResult=new PageInfo<GnAreaVo>();
+		PageInfo<GnArea> pageInfo = iGnAreaBusinessService.getAreaListByPage(areaPage);
+		pageResult.setCount(pageInfo.getCount());
+		pageResult.setPageSize(pageInfo.getPageSize());
+		pageResult.setPageNo(pageInfo.getPageNo());
+		List<GnAreaVo> areaVoList=new ArrayList<GnAreaVo>();
+		if(pageInfo.getResult()!=null&&!CollectionUtil.isEmpty(pageInfo.getResult())){
+			for(GnArea area:pageInfo.getResult()){
+				GnAreaVo areaVo=new GnAreaVo();
+				BeanUtils.copyProperties(areaVo, area);
+				areaVoList.add(areaVo);
+			}
+			pageResult.setResult(areaVoList);
+		}
+		return pageResult;
 	}
 
 	@Override
 	public PageInfo<GnAreaVo> getNationList(GnAreaPageCondition areaPage){
 		VoValidateUtils.validateGetAreaListByPage(areaPage);
-		return iGnAreaBusinessService.getAreaListByPage(areaPage);
+		PageInfo<GnAreaVo> pageResult=new PageInfo<GnAreaVo>();
+		PageInfo<GnArea> pageInfo = iGnAreaBusinessService.getAreaListByPage(areaPage);
+		pageResult.setCount(pageInfo.getCount());
+		pageResult.setPageSize(pageInfo.getPageSize());
+		pageResult.setPageNo(pageInfo.getPageNo());
+		List<GnAreaVo> areaVoList=new ArrayList<GnAreaVo>();
+		if(pageInfo.getResult()!=null&&!CollectionUtil.isEmpty(pageInfo.getResult())){
+			for(GnArea area:pageInfo.getResult()){
+				GnAreaVo areaVo=new GnAreaVo();
+				BeanUtils.copyProperties(areaVo, area);
+				areaVoList.add(areaVo);
+			}
+			pageResult.setResult(areaVoList);
+		}
+		return pageResult;
 	}
 
 	@Override
