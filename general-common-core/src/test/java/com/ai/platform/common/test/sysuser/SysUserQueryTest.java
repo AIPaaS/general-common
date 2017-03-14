@@ -14,6 +14,7 @@ import com.ai.platform.common.api.sysuser.param.SysUserQueryRequest;
 import com.ai.platform.common.api.sysuser.param.SysUserQueryResponse;
 import com.ai.platform.common.api.sysuser.param.SysUserThemeRequest;
 import com.ai.platform.common.api.sysuser.param.SysUserThemeResponse;
+import com.alibaba.fastjson.JSON;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration({ "/context/core-context.xml" })
@@ -23,10 +24,10 @@ public class SysUserQueryTest {
 	@Test
 	public void queryUserInfo(){
 		SysUserQueryRequest queryRequest=new SysUserQueryRequest();
-		queryRequest.setTenantId("chan  ghong   ");
-		queryRequest.setNo("   0010");
+		queryRequest.setTenantId("changhong");
+		queryRequest.setNo("12");
 		//queryRequest.setPhone(" 456 ");
-		queryRequest.setLoginName("jn_jsb");
+		queryRequest.setLoginName("thinkgem");
 		SysUserQueryResponse response = sv.queryUserInfo(queryRequest);
 		System.out.println(JSonUtil.toJSon(response));
 	}
@@ -41,9 +42,10 @@ public class SysUserQueryTest {
 	@Test
 	public void queryUserList(){
 		SysUserListQueryRequest queryRequest=new SysUserListQueryRequest();
-		queryRequest.setTenantId("  changhong  ");
-		queryRequest.setOfficeId("11");
+		queryRequest.setTenantId("changhong");
+		queryRequest.setOfficeId("16d66d93da99433088f532b2756fd098");
 		SysUserListQueryResponse response = sv.queryUserByOfficeId(queryRequest);
+		System.out.println(JSON.toJSON(response));
 		System.out.println(JSonUtil.toJSon(response.getSysUserList().size()));
 	}
 }

@@ -1,15 +1,14 @@
 package com.ai.platform.common.service.business.office;
 
+import java.util.List;
+
 import com.ai.opt.base.vo.PageInfo;
 import com.ai.platform.common.api.office.param.OfficeAllQueryRequest;
-import com.ai.platform.common.api.office.param.OfficeAllQueryResponse;
 import com.ai.platform.common.api.office.param.OfficeChildrenListQueryRequest;
-import com.ai.platform.common.api.office.param.OfficeChildrenListQueryResponse;
 import com.ai.platform.common.api.office.param.OfficeDetailQueryRequest;
-import com.ai.platform.common.api.office.param.OfficeDetailQueryResponse;
 import com.ai.platform.common.api.office.param.OfficeParentListQueryRequest;
 import com.ai.platform.common.api.office.param.OfficeParentListQueryResponse;
-import com.ai.platform.common.api.office.param.OfficeVO;
+import com.ai.platform.common.dao.mapper.bo.SysOffice;
 
 public interface ISysOfficeBusinessService {
 	/**
@@ -17,7 +16,7 @@ public interface ISysOfficeBusinessService {
 	 * @param queryRequest
 	 * @return
 	 */
-	OfficeDetailQueryResponse queryOfficeDetail(OfficeDetailQueryRequest queryRequest);
+	SysOffice queryOfficeDetail(OfficeDetailQueryRequest queryRequest);
 	
 	/**
 	 * 查询本身及上级组织机构
@@ -31,14 +30,14 @@ public interface ISysOfficeBusinessService {
 	 * @param queryRequest
 	 * @return
 	 */
-	OfficeChildrenListQueryResponse queryChildrenOfficeList(OfficeChildrenListQueryRequest queryRequest);
+	List<SysOffice> queryChildrenOfficeList(OfficeChildrenListQueryRequest queryRequest);
 
 	/**
 	 * 查询租户id下所有组织机构
 	 * @param queryRequest
 	 * @return
 	 */
-	PageInfo<OfficeVO> queryOfficeAll(OfficeAllQueryRequest queryRequest);
+	PageInfo<SysOffice> queryOfficeAll(OfficeAllQueryRequest queryRequest);
 
 
 }

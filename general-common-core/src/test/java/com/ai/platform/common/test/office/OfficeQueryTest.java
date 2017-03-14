@@ -29,16 +29,16 @@ public class OfficeQueryTest {
 	@Test
 	public void queryOfficeDetail(){
 		OfficeDetailQueryRequest queryRequest=new OfficeDetailQueryRequest();
-		queryRequest.setId("  25");
-		queryRequest.setTenantId(" changhong  ");
+		queryRequest.setId("00731bc1847147c5983f73c514c6eada");
+		queryRequest.setTenantId("changhong");
 		OfficeDetailQueryResponse queryOfficeDetail = sv.queryOfficeDetail(queryRequest);
 		System.out.println(JSonUtil.toJSon(queryOfficeDetail));
 	}
 	@Test
 	public void queryChildrenOfficeList(){
 		OfficeChildrenListQueryRequest queryRequest=new OfficeChildrenListQueryRequest();
-		queryRequest.setId("0");
-		queryRequest.setTenantId("SLPsa");
+		queryRequest.setId("27e5a124751143d1a04624a2bb716c57");
+		queryRequest.setTenantId("changhong");
 		OfficeChildrenListQueryResponse queryChildrenOfficeList = sv.queryChildrenOfficeList(queryRequest);
 		System.out.println(JSonUtil.toJSon(queryChildrenOfficeList));
 		System.out.println(queryChildrenOfficeList.getOfficeList().size());
@@ -46,8 +46,8 @@ public class OfficeQueryTest {
 	@Test
 	public void queryParentOfficeList(){
 		OfficeParentListQueryRequest queryRequest = new OfficeParentListQueryRequest();
-		queryRequest.setId("25");
-		queryRequest.setTenantId("SLP");
+		queryRequest.setId("002c8874b40b4b86b14fb6e706a51069");
+		queryRequest.setTenantId("changhong");
 		OfficeParentListQueryResponse queryParentOfficeList = sv.queryParentOfficeList(queryRequest);
 		System.out.println(JSonUtil.toJSon(queryParentOfficeList));
 		System.out.println(queryParentOfficeList.getOfficeList().size());

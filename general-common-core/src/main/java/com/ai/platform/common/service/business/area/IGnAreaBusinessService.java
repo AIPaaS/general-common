@@ -22,7 +22,7 @@ public interface IGnAreaBusinessService {
     List<GnArea> getStreetListByCountyCode(String countyCode);
     List<GnArea> getAreaListByStreetCode(String streetCode);
     
-    PageInfo<GnAreaVo> getAreaListByPage(GnAreaPageCondition areaPage);
+    PageInfo<GnArea> getAreaListByPage(GnAreaPageCondition areaPage);
     PageInfo<GnAreaVo> getFilterAreaListByPage(GnAreaPageFilterCondition areaPage);
     
     String addArea(GnAreaVo area);

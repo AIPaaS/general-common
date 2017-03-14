@@ -103,22 +103,8 @@ public class GnAreaBusinessService implements IGnAreaBusinessService {
 	}
 
 	@Override
-	public PageInfo<GnAreaVo> getAreaListByPage(GnAreaPageCondition areaPage) {
-		PageInfo<GnAreaVo> pageResult=new PageInfo<GnAreaVo>();
-		PageInfo<GnArea> pageInfo=gnAreaAtomService.getAreaListByPage(areaPage);
-		pageResult.setCount(pageInfo.getCount());
-		pageResult.setPageSize(pageInfo.getPageSize());
-		pageResult.setPageNo(pageInfo.getPageNo());
-		List<GnAreaVo> areaVoList=new ArrayList<GnAreaVo>();
-		if(pageInfo.getResult()!=null&&!CollectionUtil.isEmpty(pageInfo.getResult())){
-			for(GnArea area:pageInfo.getResult()){
-				GnAreaVo areaVo=new GnAreaVo();
-				BeanUtils.copyProperties(areaVo, area);
-				areaVoList.add(areaVo);
-			}
-			pageResult.setResult(areaVoList);
-		}
-		return pageResult;
+	public PageInfo<GnArea> getAreaListByPage(GnAreaPageCondition areaPage) {
+		return gnAreaAtomService.getAreaListByPage(areaPage);
 	}
 
 	@Override
