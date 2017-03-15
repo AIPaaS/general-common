@@ -1,6 +1,7 @@
 package com.ai.platform.common.api.office.impl;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,8 +25,10 @@ import com.ai.platform.common.api.office.param.OfficeParentListQueryResponse;
 import com.ai.platform.common.api.office.param.OfficeVO;
 import com.ai.platform.common.constants.ResultCodeConstants;
 import com.ai.platform.common.dao.mapper.bo.SysOffice;
+import com.ai.platform.common.service.atom.office.ISysOfficeAtomService;
 import com.ai.platform.common.service.business.office.ISysOfficeBusinessService;
 import com.ai.platform.common.util.SystemValidateUtil;
+import com.alibaba.dubbo.common.utils.StringUtils;
 import com.alibaba.dubbo.config.annotation.Service;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -36,6 +39,8 @@ public class SysOfficeQueryImpl implements ISysOfficeQuerySV {
 
 	@Autowired
 	ISysOfficeBusinessService iSysofficeBusinessService;
+	@Autowired
+	private ISysOfficeAtomService ISysOfficeAtomService;
 	
 	@Override
 	public OfficeDetailQueryResponse queryOfficeDetail(OfficeDetailQueryRequest queryRequest) throws BusinessException,
@@ -61,8 +66,41 @@ public class SysOfficeQueryImpl implements ISysOfficeQuerySV {
 	public OfficeParentListQueryResponse queryParentOfficeList(
 			OfficeParentListQueryRequest queryRequest)
 			throws BusinessException, SystemException {
+		//参数校验
 		SystemValidateUtil.validateQueryParentOfficeList(queryRequest);
-		return iSysofficeBusinessService.queryParentOfficeList(queryRequest);
+		SysOffice sysOfficeInfo = ISysOfficeAtomService.selectSysOfficeInfo(queryRequest.getId(), queryRequest.getTenantId());
+		OfficeParentListQueryResponse queryResponse = new OfficeParentListQueryResponse();
+		if(sysOfficeInfo != null){
+			List<OfficeVO> officeList = new LinkedList<OfficeVO>();
+			String parentIds = sysOfficeInfo.getParentIds();
+			//转换返回类型
+			OfficeVO officeVoSelf = new OfficeVO();
+			BeanUtils.copyProperties(officeVoSelf,sysOfficeInfo);
+			//添加父组织列表
+			if(!StringUtils.isBlank(parentIds)){
+				String[] officeIdArray = parentIds.split(",");
+				List<String> officeIdList = new ArrayList<String>();
+				for(String officeId : officeIdArray){
+					officeIdList.add(officeId);
+				}
+				List<SysOffice> selectSysOfficeList = ISysOfficeAtomService.selectSysOfficeList(officeIdList);
+				if(selectSysOfficeList != null){
+					String officeListJson = JSonUtil.toJSon(selectSysOfficeList);
+					Gson gson = new Gson();
+					List<OfficeVO> parentOffices = gson.fromJson(officeListJson, new TypeToken<List<OfficeVO>>(){}.getType());
+					officeList.addAll(parentOffices);
+				}
+			}
+			//添加自身组织
+			officeList.add(officeVoSelf);
+			queryResponse.setOfficeList(officeList);
+			ResponseHeader responseHeader=new ResponseHeader(true, ResultCodeConstants.SUCCESS_CODE, "查询成功");
+			queryResponse.setResponseHeader(responseHeader);
+		}else{
+			ResponseHeader responseHeader=new ResponseHeader(true, ResultCodeConstants.NULL_CODE, "无数据");
+			queryResponse.setResponseHeader(responseHeader);
+		}
+		return queryResponse;
 	}
 
 	@Override
